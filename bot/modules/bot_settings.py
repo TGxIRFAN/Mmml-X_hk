@@ -8,7 +8,7 @@ from collections import OrderedDict
 from asyncio import create_subprocess_exec, create_subprocess_shell, sleep, gather
 from aiofiles.os import remove, rename, path as aiopath
 from aiofiles import open as aiopen
-from os import environ, getcwd, path as ospath
+from os import environ, getcwd
 from dotenv import load_dotenv
 from time import time
 from io import BytesIO
