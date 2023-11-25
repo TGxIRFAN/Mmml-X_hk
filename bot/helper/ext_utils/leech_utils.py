@@ -257,16 +257,16 @@ async def format_filename(file_, user_id, dirpath=None, isMirror=False):
             remname = f"|{remname}"
         remname = remname.replace('\s', ' ')
         slit = remname.split("|")
-        newFileName = ospath.splitext(file_)[0]
+        __newFileName = ospath.splitext(file_)[0]
         for rep in range(1, len(slit)):
             args = slit[rep].split(":")
             if len(args) == 3:
-                newFileName = re_sub(args[0], args[1], __newFileName, int(args[2]))
+                __newFileName = re_sub(args[0], args[1], __newFileName, int(args[2]))
             elif len(args) == 2:
-                newFileName = re_sub(args[0], args[1], __newFileName)
+                __newFileName = re_sub(args[0], args[1], __newFileName)
             elif len(args) == 1:
-                newFileName = re_sub(args[0], '', __newFileName)
-        file = newFileName + ospath.splitext(file_)[1]
+                __newFileName = re_sub(args[0], '', __newFileName)
+        file_ = __newFileName + ospath.splitext(file_)[1]
         LOGGER.info(f"New Remname : {file_}")
 
     nfile_ = file_
