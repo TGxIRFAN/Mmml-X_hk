@@ -213,7 +213,7 @@ class TgUploader:
                 new_path = ospath.join(dirpath, file_)
                 await aiorename(self.__up_path, new_path)
                 self.__up_path = new_path
-        if len(file_) > 64:
+        if len(file_) > 60:
             if is_archive(file_):
                 name = get_base_name(file_)
                 ext = file_.split(name, 1)[1]
@@ -227,7 +227,7 @@ class TgUploader:
                 name = file_
                 ext = ''
             extn = len(ext)
-            remain = 64 - extn
+            remain = 60 - extn
             name = name[:remain]
             if self.__listener.seed and not self.__listener.newDir and not dirpath.endswith("/splited_files_mltb"):
                 dirpath = f'{dirpath}/copied_mltb'
