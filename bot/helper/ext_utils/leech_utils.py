@@ -250,6 +250,7 @@ async def format_filename(file_, user_id, dirpath=None, isMirror=False):
     lcaption = config_dict['LEECH_FILENAME_CAPTION'] if (val:=user_dict.get('lcaption', '')) == '' else val
    
     prefile_ = file_
+    file_ = re_sub(r'www\S+', '', file_)
 
     if remname:
         if not remname.startswith('|'):
