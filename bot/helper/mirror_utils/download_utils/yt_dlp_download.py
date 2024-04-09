@@ -63,6 +63,7 @@ class YoutubeDLHelper:
                      'allow_multiple_audio_streams': True,
                      'noprogress': True,
                      'allow_playlist_files': True,
+                     'ratelimit': 4000000,
                      'overwrites': True,
                      'writethumbnail': True,
                      'trim_file_name': 220,
