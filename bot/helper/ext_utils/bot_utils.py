@@ -741,6 +741,10 @@ async def set_commands(client):
                 'Get detailed help about the WZML-X Bot',
             ),
             BotCommand(
+                BotCommands.BypassCommand[0],
+                f'or /{BotCommands.BypassCommand[1]} Bypass Links',
+            ),
+            BotCommand(
                 BotCommands.UserSetCommand[0],
                 f"or /{BotCommands.UserSetCommand[1]} User's Personal Settings (Open in PM)",
             ),
