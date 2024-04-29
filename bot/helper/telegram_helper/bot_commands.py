@@ -18,7 +18,7 @@ class _BotCommands:
             self.QbLeechCommand.extend([f'qbuzl{CMD_SUFFIX}', f'qbunzipleech{CMD_SUFFIX}', f'qbzl{CMD_SUFFIX}', f'qbzipleech{CMD_SUFFIX}'])
             self.YtdlLeechCommand.extend([f'ytzl{CMD_SUFFIX}', f'ytdlzipleech{CMD_SUFFIX}'])
         self.CloneCommand = [f'c{CMD_SUFFIX}', f'clone{CMD_SUFFIX}']
-        self.BypassCommand = [f'bypass{CMD_SUFFIX}', f'bp{CMD_SUFFIX}']
+        self.BypassCommand = [f'bp{CMD_SUFFIX}', f'bypass{CMD_SUFFIX}']
         self.CountCommand = f'count{CMD_SUFFIX}'
         self.DeleteCommand = f'del{CMD_SUFFIX}'
         self.CancelMirror = f'can{CMD_SUFFIX}'
