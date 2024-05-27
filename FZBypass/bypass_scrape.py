@@ -5,7 +5,7 @@ from cloudscraper import create_scraper
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-from FZBypass import Config, LOGGER
+from bot import Config, LOGGER
 from FZBypass.bypass_ddl import transcript
 
 
