@@ -14,6 +14,7 @@ from cloudscraper import create_scraper
 from lxml import etree
 from aiohttp import ClientSession
 
+from FZBypass import Config, LOGGER
 from FZBypass.bot_utils import get_dl
 from FZBypass.exceptions import DDLException
 
