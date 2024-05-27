@@ -10,9 +10,9 @@ from pyrogram.handlers import MessageHandler
 from bot import config_dict, bot, LOGGER
 from bot.helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper.bot_commands import BotCommands
-from bot.core.bypass_checker import direct_link_checker, is_excep_link
-from bot.core.bot_utils import chat_and_topics, convert_time
-from bot.core.exceptions import DDLException
+from FZBypass.bypass_checker import direct_link_checker, is_excep_link
+from FZBypass.bot_utils import chat_and_topics, convert_time
+from FZBypass.exceptions import DDLException
 
 async def bypass_check(client, message):
     uid = message.from_user.id
