@@ -2,7 +2,7 @@ from re import match
 from traceback import format_exc
 from urllib.parse import urlparse
 
-from bot import LOGGER
+from bot import Config, LOGGER
 from FZBypass.bypass_dlinks import *
 from FZBypass.bypass_ddl import *
 from FZBypass.bypass_scrape import *
