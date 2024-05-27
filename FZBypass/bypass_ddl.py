@@ -14,7 +14,7 @@ from lxml import etree
 from requests import Session, get as rget
 from aiohttp import ClientSession
 
-from bot import Config, LOGGER
+from bot import LOGGER
 from FZBypass.exceptions import DDLException
 from FZBypass.recaptcha import recaptchaV3
 
