@@ -11,7 +11,7 @@ from bot import config_dict, bot, LOGGER
 from bot.helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from FZBypass.bypass_checker import direct_link_checker, is_excep_link
-from FZBypass.bot_utils import convert_time
+from FZBypass.bot_utils import convert_time, chat and topics
 from FZBypass.exceptions import DDLException
 
 async def bypass_check(client, message):
