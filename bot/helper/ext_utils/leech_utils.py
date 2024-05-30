@@ -252,7 +252,10 @@ async def format_filename(file_, user_id, dirpath=None, isMirror=False):
     lmetadata = user_dict.get('lmetadata', '')
     
     prefile_ = file_
-    file_ = re_sub(r'www\S+', '', file_)
+    if file_.startswith('www'):
+        file_ = ' '.join(file_.split()[1:])
+    if file_.startswith('TheMoviesBoss'):
+        file_ = ' '.join(file_.split()[1:])
 
     if lmetadata and dirpath and file_.lower().endswith('.mkv'):
         file_ = await change_metadata(file_, dirpath, lmetadata)
