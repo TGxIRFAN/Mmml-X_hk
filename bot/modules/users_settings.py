@@ -73,11 +73,11 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
     rclone_path = f'rclone/{user_id}.conf'
     user_dict = user_data.get(user_id, {})
     if key is None:
-        buttons.ibutton("𝖴𝗇𝗂𝗏𝖾𝗋𝗌𝖺𝗅 𝖲𝖾𝗍𝗍𝗂𝗇𝗀𝗌", f"userset {user_id} universal")
-        buttons.ibutton("𝖬𝗂𝗋𝗋𝗈𝗋 𝖲𝖾𝗍𝗍𝗂𝗇𝗀𝗌", f"userset {user_id} mirror")
-        buttons.ibutton("𝖫𝖾𝖾𝖼𝗁 𝖲𝖾𝗍𝗍𝗂𝗇𝗀𝗌", f"userset {user_id} leech")
+        buttons.ibutton("Universal Settings", f"userset {user_id} universal")
+        buttons.ibutton("Mirror Settings", f"userset {user_id} mirror")
+        buttons.ibutton("Leech Settings", f"userset {user_id} leech")
         if user_dict and any(key in user_dict for key in list(fname_dict.keys())):
-            buttons.ibutton("𝖱𝖾𝗌𝖾𝗍 𝖲𝖾𝗍𝗍𝗂𝗇𝗀𝗌", f"userset {user_id} reset_all")
+            buttons.ibutton("Reset Setting", f"userset {user_id} reset_all")
         buttons.ibutton("Close", f"userset {user_id} close")
 
         text = BotTheme('USER_SETTING', NAME=name, ID=user_id, USERNAME=f'@{from_user.username}', LANG=Language.get(lc).display_name() if (lc := from_user.language_code) else "N/A", DC=from_user.dc_id)
