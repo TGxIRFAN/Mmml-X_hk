@@ -5,7 +5,7 @@ from logging import getLogger
 from yt_dlp import YoutubeDL, DownloadError
 from re import search as re_search
 
-from bot import download_dict_lock, download_dict, non_queued_dl, queue_dict_lock
+from bot import download_dict_lock, download_dict, non_queued_dl, queue_dict_lock, bot_cache
 from bot.helper.telegram_helper.message_utils import sendStatusMessage
 from ..status_utils.yt_dlp_download_status import YtDlpDownloadStatus
 from bot.helper.mirror_utils.status_utils.queue_status import QueueStatus
@@ -67,6 +67,7 @@ class YoutubeDLHelper:
                      'overwrites': True,
                      'writethumbnail': True,
                      'trim_file_name': 220,
+                     'ffmpeg_location': f"/bin/{bot_cache['pkgs'][2]}",
                      'retry_sleep_functions': {'http': lambda n: 3,
                                                'fragment': lambda n: 3,
                                                'file_access': lambda n: 3,
