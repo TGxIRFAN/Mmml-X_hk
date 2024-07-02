@@ -361,3 +361,53 @@ def get_md5_hash(up_path):
         for byte_block in iter(lambda: f.read(4096), b""):
             md5_hash.update(byte_block)
         return md5_hash.hexdigest()
+
+async def change_metadata(file, dirpath, key):
+    LOGGER.info(f"Trying to change metadata for file: {file}")
+    temp_file = f"{file}.temp.mkv"
+    
+    full_file_path = os.path.join(dirpath, file)
+    temp_file_path = os.path.join(dirpath, temp_file)
+    
+    cmd = ['ffprobe', '-hide_banner', '-loglevel', 'error', '-print_format', 'json', '-show_streams', full_file_path]
+    process = await create_subprocess_exec(*cmd, stdout=PIPE, stderr=PIPE)
+    stdout, stderr = await process.communicate()
+    
+    if process.returncode != 0:
+        LOGGER.error(f"Error getting stream info: {stderr.decode().strip()}")
+        return file
+    
+    streams = json.loads(stdout)['streams']
+    
+    cmd = ['ffmpeg', '-y', '-i', full_file_path, '-c', 'copy', '-metadata', f'title={key}']
+    
+    audio_index = 0
+    subtitle_index = 0
+    
+    for stream in streams:
+        stream_index = stream['index']
+        stream_type = stream['codec_type']
+        
+        cmd.extend(['-map', f'0:{stream_index}'])
+        
+        if stream_type == 'video':
+            cmd.extend([f'-metadata:s:v:{stream_index}', f'title={key}'])
+        elif stream_type == 'audio':
+            cmd.extend([f'-metadata:s:a:{audio_index}', f'title={key}'])
+            audio_index += 1
+        elif stream_type == 'subtitle':
+            cmd.extend([f'-metadata:s:s:{subtitle_index}', f'title={key}'])
+            subtitle_index += 1
+    
+    cmd.append(temp_file_path)
+    
+    process = await create_subprocess_exec(*cmd, stderr=PIPE)
+    await process.wait()
+    
+    if process.returncode != 0:
+        LOGGER.error(f"Error changing metadata for file: {file}")
+        return file
+    
+    os.replace(temp_file_path, full_file_path)
+    LOGGER.info(f"Metadata changed successfully for file: {file}")
+    return file
