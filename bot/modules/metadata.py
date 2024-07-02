@@ -35,6 +35,7 @@ async def edit_video_titles(user_id, file_path):
                 "-metadata", f"title={new_title}",
                 "-metadata", "copyright=",
                 "-metadata", "description=",
+                "-metadata", "license=",
                 "-metadata", "LICENSE=",
                 "-metadata", "author=",
                 "-metadata", "summary=",
