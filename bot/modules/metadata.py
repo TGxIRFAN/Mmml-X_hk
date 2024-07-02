@@ -31,32 +31,7 @@ async def edit_video_titles(user_id, file_path):
             subtitle_stream_count = 0
 
         cmd = ["ffmpeg", "-i", file_path, "-map", "0", "-c", "copy"]
-        cmd += ["-metadata:s:v:0", f"title={new_title}", 
-                "-metadata", f"title={new_title}",
-                "-metadata", "copyright=",
-                "-metadata", "description=",
-                "-metadata", "license=",
-                "-metadata", "LICENSE=",
-                "-metadata", "author=",
-                "-metadata", "summary=",
-                "-metadata", "comment=",
-                "-metadata", "artist=",
-                "-metadata", "album=",
-                "-metadata", "genre=",
-                "-metadata", "date=",
-                "-metadata", "creation_time=",
-                "-metadata", "language=",
-                "-metadata", "publisher=",
-                "-metadata", "encoder=",
-                "-metadata", "SUMMARY=",
-                "-metadata", "AUTHOR=",
-                "-metadata", "WEBSITE=",
-                "-metadata", "COMMENT=",
-                "-metadata", "ENCODER=",
-                "-metadata", "FILENAME=",
-                "-metadata", "MIMETYPE=",
-                "-metadata", "PURL=",
-                "-metadata", "ALBUM="]
+        cmd += ["-metadata:s:v:0", f"title={new_title}"]
         for i in range(audio_stream_count):
             cmd += ["-metadata:s:a:{}".format(i), f"title={new_title}"]
         for i in range(subtitle_stream_count):
